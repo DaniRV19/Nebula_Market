@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nebula Market</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <script defer src="app.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-pink-50 text-gray-800">
+  <header class="flex justify-between items-center px-6 py-4 bg-white shadow-md sticky top-0 z-50">
+    <h1 class="text-2xl font-bold text-pink-600">Nebula Market</h1>
+    <div class="flex items-center gap-6">
+      <button id="loginBtn" class="text-pink-600 hover:text-pink-800 font-semibold">Iniciar sesión</button>
+      <button id="toggleFavorites" class="relative">
+        ❤️<span id="favoritesCount" class="absolute -top-2 -right-2 text-xs bg-pink-600 text-white rounded-full px-1 hidden">0</span>
+      </button>
+      <button id="toggleCart" class="relative">
+        🛒<span id="cartCount" class="absolute -top-2 -right-2 text-xs bg-pink-600 text-white rounded-full px-1 hidden">0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="px-6 py-4 bg-white shadow-sm">
+    <input id="searchInput" type="text" placeholder="Buscar productos..." class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+  </section>
+
+  <main id="productsSection" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6"></main>
+
+  <nav id="pagination" class="flex justify-center my-6 space-x-2"></nav>
+
+  <div id="cartOverlay" tabindex="-1"></div>
+  <aside id="cart" role="dialog" aria-label="Carrito de compras">
+    <header>
+      <span>Tu carrito</span>
+      <button id="cartCloseBtn">&times;</button>
+    </header>
+    <div id="cartItems"></div>
+    <footer>
+      <span>Total:</span>
+      <span id="cartTotal">$0.00</span>
+      <button id="checkout">Pagar</button>
+    </footer>
+  </aside>
+
+  <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-sm relative">
+      <button id="closeLoginModal" class="absolute top-2 right-2 text-xl">&times;</button>
+      <h2 class="text-xl font-bold mb-4 text-pink-600">Inicia sesión</h2>
+      <form id="loginForm" class="flex flex-col gap-4">
+        <input type="text" id="username" placeholder="Usuario" class="border px-4 py-2 rounded-md" required />
+        <input type="password" id="password" placeholder="Contraseña" class="border px-4 py-2 rounded-md" required />
+        <button type="submit" class="bg-pink-600 text-white py-2 rounded-md font-semibold hover:bg-pink-700">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <section id="favoritesSection" class="hidden px-6 py-4">
+    <h2 class="text-2xl font-semibold mb-4 text-pink-600">Favoritos</h2>
+    <div id="favoritesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <footer class="bg-white text-center text-sm text-gray-500 py-6 mt-10 shadow-inner">
+    &copy; 2025 Nebula Market. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
